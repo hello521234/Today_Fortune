@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <title>오늘의 운세</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="main">
+        <h1>오늘의 운세</h1>
+        <button onclick="start()">시작하기 &gt;</button>
+    </div>
+
+    <div class="container" id="form" style="display:none;">
+        <input type="text" id="name" placeholder="이름을 입력하세요" style="width: 200px; height: 40px;">
+        <div>
+            <select id="year">
+                <option value="">년</option>
+                <script>
+                    const currentYear = new Date().getFullYear();
+                    for (let year = 1970; year <= currentYear; year++) {
+                        document.write(`<option value="${year}">${year}</option>`);
+                    }
+                </script>
+            </select>
+            <select id="month">
+                <option value="">월</option>
+                <script>
+                    for (let month = 1; month <= 12; month++) {
+                        document.write(`<option value="${month}">${month}</option>`);
+                    }
+                </script>
+            </select>
+            <select id="day">
+                <option value="">일</option>
+                <script>
+                    for (let day = 1; day <= 31; day++) {
+                        document.write(`<option value="${day}">${day}</option>`);
+                    }
+                </script>
+            </select>
+        </div>
+        <button onclick="next()">다음 &gt;</button>
+    </div>
+
+    <div class="container" id="fortune" style="display:none;">
+        <h2>운 선택하기</h2>
+        <button onclick="getFortune('연애운')">연애운</button>
+        <button onclick="getFortune('재물운')">재물운</button>
+        <button onclick="getFortune('학업운')">학업운</button>
+    </div>
+
+    <div class="container" id="result" style="display:none;">
+        <h2>오늘의 운세</h2>
+        <pre id="fortuneResult"></pre>
+        <button onclick="restart()">다시 시작하기</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
